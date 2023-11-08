@@ -17,8 +17,12 @@ export const App = ({ position = [0, 0, 3], fov = 25 }) => (
     eventSource={document.getElementById("root")}
     eventPrefix="client"
   >
-    <ambientLight intensity={0.5} />
-    <Environment preset="city" />
+     <ambientLight intensity={.5} />  // Adjust ambient light intensity
+ <directionalLight
+    intensity={1}
+    position={[0, 0, 1]}  // Adjust the position to be in front of the shirt
+  />
+  <Environment preset="city" />
 
     <CameraRig>
     <Center>
