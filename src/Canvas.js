@@ -17,6 +17,8 @@ export const App = ({ position = [0, 0, 3], fov = 25 }) => (
     eventSource={document.getElementById("root")}
     eventPrefix="client"
   >
+
+    {/* lighting of shirt */}
      <ambientLight intensity={.5} />  // Adjust ambient light intensity
  <directionalLight
     intensity={1}
