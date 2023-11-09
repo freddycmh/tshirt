@@ -9,6 +9,10 @@ import {
 import { useRef } from "react";
 import { Camera, RawShaderMaterial } from "three";
 import { easing } from "maath";
+import { useSnapshot } from "valtio";
+import { state } from "./store";
+import * as THREE from 'three';
+
 
 export const App = ({ position = [0, 0, 3], fov = 25 }) => (
   <Canvas
@@ -36,7 +40,12 @@ export const App = ({ position = [0, 0, 3], fov = 25 }) => (
 );
 
 function Shirt(props) {
+  const snap= useSnapshot(state)
   const { nodes, materials } = useGLTF("/shirt_baked2.glb");
+  // color of shirt
+  useFrame((state, delta) =>
+    easing.dampC(materials.lambert1.color, snap.selectedColor, 0.25, delta)
+  )
   return (
     <group {...props} dispose={null}>
       <mesh
@@ -44,6 +53,7 @@ function Shirt(props) {
         receiveShadow
         geometry={nodes.T_Shirt_male.geometry}
         material={materials.lambert1}
+        material-roughness={2}
         position={[0.419, 0, 0]}
         rotation={[Math.PI / 2, 0, 0]}
       />
@@ -52,8 +62,21 @@ function Shirt(props) {
 }
 
 function Backdrop() {
+
+    const shadows = useRef()
+
+  useFrame((state, delta) =>
+    easing.dampC(
+      shadows.current.getMesh().material.color,
+      state.selectedColor,
+      0.25,
+      delta
+    )
+  )
+  
   return (
     <AccumulativeShadows
+      ref={shadows}
       temporal
       frames={60}
       alphaTest={0.85}
