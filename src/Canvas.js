@@ -31,7 +31,6 @@ export const App = ({ position = [0, 0, 3], fov = 25 }) => (
       <Shirt />
       <Backdrop />
       </Center>
-      
       </CameraRig>
   </Canvas>
 );
