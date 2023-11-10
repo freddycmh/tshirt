@@ -4,7 +4,8 @@ import {
   Center,
   useGLTF,
   AccumulativeShadows,
-  RandomizedLight
+  RandomizedLight,
+  OrbitControls
 } from "@react-three/drei";
 import { useRef } from "react";
 import { Camera, RawShaderMaterial } from "three";
@@ -35,7 +36,8 @@ export const App = ({ position = [0, 0, 3], fov = 25 }) => (
       <Shirt />
       <Backdrop />
       </Center>
-      </CameraRig>
+    </CameraRig>
+     {/* <OrbitControls /> */}
   </Canvas>
 );
 
