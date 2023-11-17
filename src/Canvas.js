@@ -1,10 +1,12 @@
 import { Canvas, useFrame } from "@react-three/fiber";
 import {
+  useGLTF,
   Environment,
   Center,
-  useGLTF,
   AccumulativeShadows,
   RandomizedLight,
+  useTexture,
+  Decal,
   OrbitControls
 } from "@react-three/drei";
 import { useRef } from "react";
@@ -15,15 +17,17 @@ import { state } from "./store";
 import * as THREE from 'three';
 
 
-export const App = ({ position = [0, 0, 3], fov = 25 }) => (
+export const App = ({ position = [0, 0, 2.5], fov = 25 }) => (
   <Canvas
+      // camera={{ position, fov, near: 0.1, far: 1000 }}  // Adjust near and far values
+
     shadows
+    gl={{preserveDrawingBuffer:true}}
     camera={{ position, fov }}
     eventSource={document.getElementById("root")}
     eventPrefix="client"
   >
 
-    {/* lighting of shirt */}
      <ambientLight intensity={.5} />  // Adjust ambient light intensity
  <directionalLight
     intensity={1}
@@ -32,34 +36,50 @@ export const App = ({ position = [0, 0, 3], fov = 25 }) => (
   <Environment preset="city" />
 
     <CameraRig>
+      <Backdrop />
     <Center>
       <Shirt />
-      <Backdrop />
       </Center>
     </CameraRig>
-     {/* <OrbitControls /> */}
+    {/* <OrbitControls/> */}
   </Canvas>
 );
 
 function Shirt(props) {
-  const snap= useSnapshot(state)
+  const snap = useSnapshot(state)
+  
+  const texture = useTexture(`/${snap.selectedDecal}.png`)
   const { nodes, materials } = useGLTF("/shirt_baked2.glb");
   // color of shirt
   useFrame((state, delta) =>
     easing.dampC(materials.lambert1.color, snap.selectedColor, 0.25, delta)
   )
+
+console.log('Decal Texture:', texture);
+  
   return (
-    <group {...props} dispose={null}>
+   
       <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.T_Shirt_male.geometry}
-        material={materials.lambert1}
-        material-roughness={2}
-        position={[0.419, 0, 0]}
-        rotation={[Math.PI / 2, 0, 0]}
-      />
-    </group>
+      castShadow
+      // receiveShadow
+      geometry={nodes.T_Shirt_male.geometry}
+      material={materials.lambert1}
+      material-roughness={2}
+      position={[0.419, 0, 0]}
+      rotation={[Math.PI / 2, 0, 0]}
+      {...props}
+      dispose={null}
+    >
+ <Decal
+  position={[-.41, .35, -0.24]}
+  rotation={[2, 0, 1]}
+  scale={[0.15, 0.15, 0.7]}  // Adjust the scale as needed
+  opacity={16} // Adjust the opacity if needed
+  map={texture}
+  mapAnisotropy={16}
+/>
+    </mesh>
+
   );
 }
 
@@ -120,3 +140,4 @@ function CameraRig({ children }) {
 
 
 useGLTF.preload("/shirt_baked2.glb");
+['/react.png', '/three2.png', '/pmndrs.png'].forEach(useTexture.preload)

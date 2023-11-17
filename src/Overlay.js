@@ -69,13 +69,28 @@ function Customizer() {
         <div className="decals">
           <div className="decals--container">
             {snap.decals.map((decal) => (
-              <div key={decal} className="decal">
+              <div key={decal} className="decal"
+               onClick={() => (state.selectedDecal = decal)}
+              >
                 <img src={decal + '_thumb.png'} alt="brand" />
               </div>
             ))}
           </div>
         </div>
-        <button className="share" style={{ background: snap.selectedColor }}>
+        <button className="share"
+          style={{ background: snap.selectedColor }}
+         onClick={() => {
+            const link = document.createElement('a')
+            link.setAttribute('download', 'canvas.png')
+            link.setAttribute(
+              'href',
+              document
+                .querySelector('canvas')
+                .toDataURL('image/png')
+                .replace('image/png', 'image/octet-stream')
+            )
+            link.click()
+          }} >
           DOWNLOAD
           <AiFillCamera size="1.3em" />
         </button>
