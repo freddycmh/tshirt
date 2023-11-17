@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/tshirt/static/css/main.bdfa589b.chunk.css",
-    "main.js": "/tshirt/static/js/main.e5746ca9.chunk.js",
-    "main.js.map": "/tshirt/static/js/main.e5746ca9.chunk.js.map",
+    "main.css": "/tshirt/static/css/main.5f7dba13.chunk.css",
+    "main.js": "/tshirt/static/js/main.0ad7bc92.chunk.js",
+    "main.js.map": "/tshirt/static/js/main.0ad7bc92.chunk.js.map",
     "runtime-main.js": "/tshirt/static/js/runtime-main.923981be.js",
     "runtime-main.js.map": "/tshirt/static/js/runtime-main.923981be.js.map",
     "static/js/2.3dc15e57.chunk.js": "/tshirt/static/js/2.3dc15e57.chunk.js",
     "static/js/2.3dc15e57.chunk.js.map": "/tshirt/static/js/2.3dc15e57.chunk.js.map",
     "index.html": "/tshirt/index.html",
-    "static/css/main.bdfa589b.chunk.css.map": "/tshirt/static/css/main.bdfa589b.chunk.css.map",
+    "static/css/main.5f7dba13.chunk.css.map": "/tshirt/static/css/main.5f7dba13.chunk.css.map",
     "static/js/2.3dc15e57.chunk.js.LICENSE.txt": "/tshirt/static/js/2.3dc15e57.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.923981be.js",
     "static/js/2.3dc15e57.chunk.js",
-    "static/css/main.bdfa589b.chunk.css",
-    "static/js/main.e5746ca9.chunk.js"
+    "static/css/main.5f7dba13.chunk.css",
+    "static/js/main.0ad7bc92.chunk.js"
   ]
 }
