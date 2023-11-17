@@ -190,7 +190,7 @@ button:hover {
 }
 
 .decals img {
-  width: 24px;
+  width: 40px;
   filter: saturate(0) invert(1) brightness(5.5);
   transition: all 0.2s ease-in-out;
 }
@@ -240,3 +240,6 @@ button:hover {
     left: 0;
   }
 }
+
+/* Add or modify these styles in your CSS file */
+

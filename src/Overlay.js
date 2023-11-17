@@ -2,7 +2,9 @@ import { Logo } from "@pmndrs/branding"
 import { AiOutlineShopping, AiOutlineHighlight, AiOutlineArrowLeft, AiFillCamera } from 'react-icons/ai'
 
 import { useSnapshot } from "valtio"
-import {state} from './store'
+import { state } from './store'
+import ColorPicker from './ColorPicker';
+
 
 
 export default function Overlay() {
@@ -51,13 +53,14 @@ function Intro() {
 function Customizer() {
    const snap = useSnapshot(state)
 
-  const colors = ['#ccc', '#EFBD4E', '#80C670', '#726DE8', '#EF674E', '#353934']
-  const decals = ['react', 'three2', 'pmndrs']
+  // const colors = ['#ccc', '#EFBD4E', '#80C670', '#726DE8', '#EF674E', '#353934']
+  // const decals = ['react', 'three2', 'pmndrs']
 
   return (
     <section key="custom">
       <div className="customizer">
         <div className="color-options">
+          <ColorPicker/>
           {snap.colors.map((color) => (
             <div
               key={color}
@@ -72,7 +75,8 @@ function Customizer() {
               <div key={decal} className="decal"
                onClick={() => (state.selectedDecal = decal)}
               >
-                <img src={decal + '_thumb.png'} alt="brand" />
+                {/* <img src={decal + '_thumb.png'} alt="brand" /> */}
+                <img src={decal + '.png'} alt="brand" />
               </div>
             ))}
           </div>

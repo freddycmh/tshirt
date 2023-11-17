@@ -17,6 +17,8 @@ import { state } from "./store";
 import * as THREE from 'three';
 
 
+
+
 export const App = ({ position = [0, 0, 2.5], fov = 25 }) => (
   <Canvas
       // camera={{ position, fov, near: 0.1, far: 1000 }}  // Adjust near and far values
@@ -71,12 +73,14 @@ console.log('Decal Texture:', texture);
       dispose={null}
     >
  <Decal
-  position={[-.41, .35, -0.24]}
-  rotation={[2, 0, 1]}
-  scale={[0.15, 0.15, 0.7]}  // Adjust the scale as needed
-  opacity={16} // Adjust the opacity if needed
-  map={texture}
+  position={[-.415, .19, -0.45]}
+        rotation={[4, 0, 0]}
+      // rotation={[Math.PI / 1.6, .1, -1]}
+        
+  scale={[0.12, 0.12, 0.7]}  // Adjust the scale as needed
+  opacity={.75} // Adjust the opacity if needed
   mapAnisotropy={16}
+ map={texture}
 />
     </mesh>
 
