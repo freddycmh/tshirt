@@ -66,9 +66,12 @@ function Customizer() {
               key={color}
               className="circle"
               style={{ background: color }}
-              onClick={() => { state.selectedColor = color }}></div>
+              onClick={() => { state.selectedColor = color }}>
+              </div>
           ))}
+
         </div>
+        
         <div className="decals">
           <div className="decals--container">
             {snap.decals.map((decal) => (

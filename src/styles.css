@@ -162,6 +162,8 @@ button:hover {
   gap: 10px;
   bottom: 20px;
   margin-bottom: 20px;
+    justify-content: center;
+      /* Add this to center the color picker horizontally */
 }
 
 .circle {
