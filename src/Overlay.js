@@ -7,17 +7,20 @@ import ColorPicker from './ColorPicker';
 
 
 
+
 export default function Overlay() {
   const snap= useSnapshot(state)
   return (
    <div className="container">
       <header>
-        <Logo width="40" height="40" />
+        {/* <Logo width="40" height="40" /> */}
         <div>
-          <AiOutlineShopping size="3em" />
+          {/* logo for shopping  */}
+          {/* <AiOutlineShopping size="3em" /> */}
         </div>
       </header>
-      {snap.intro?<Intro/> : <Customizer/>}
+      {snap.intro ? <Intro /> : <Customizer />}
+      
   </div>
   )
 }
@@ -56,6 +59,19 @@ function Customizer() {
   // const colors = ['#ccc', '#EFBD4E', '#80C670', '#726DE8', '#EF674E', '#353934']
   // const decals = ['react', 'three2', 'pmndrs']
 
+  const handleDecalUpload = (event) => {
+    const file = event.target.files[0];
+
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        state.customDecal = reader.result;
+        state.selectedDecal = 'custom';
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   return (
     <section key="custom">
       <div className="customizer">
@@ -83,7 +99,20 @@ function Customizer() {
               </div>
             ))}
           </div>
+            <div className="decal">
+          <label htmlFor="customDecalInput">
+            <input
+              type="file"
+              id="customDecalInput"
+              accept=".png, .jpg, .jpeg"
+              onChange={handleDecalUpload}
+              style={{ display: 'none' }}
+            />
+            <AiFillCamera size="2em" />
+          </label>
         </div>
+        </div>
+
         <button className="share"
           style={{ background: snap.selectedColor }}
          onClick={() => {

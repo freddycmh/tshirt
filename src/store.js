@@ -7,7 +7,9 @@ const state = proxy({
   decals: ['smpls1', 'smpls2', 'diskko'],
 
   selectedColor: '#C0C0C0',
-  selectedDecal:'diskko2'
+  selectedDecal: 'diskko2',
+  customDecal: null
+  
 })
 
 export { state }

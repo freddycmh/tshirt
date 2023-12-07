@@ -19,6 +19,8 @@ import * as THREE from 'three';
 
 
 
+
+
 export const App = ({ position = [0, 0, 2.5], fov = 25 }) => (
   <Canvas
       // camera={{ position, fov, near: 0.1, far: 1000 }}  // Adjust near and far values
@@ -40,6 +42,7 @@ export const App = ({ position = [0, 0, 2.5], fov = 25 }) => (
     <CameraRig>
       <Backdrop />
     <Center>
+      
       <Shirt />
       </Center>
     </CameraRig>
@@ -50,7 +53,7 @@ export const App = ({ position = [0, 0, 2.5], fov = 25 }) => (
 function Shirt(props) {
   const snap = useSnapshot(state)
   
-  const texture = useTexture(`/${snap.selectedDecal}.png`)
+   const texture = snap.selectedDecal === 'custom' ? useTexture(state.customDecal) : useTexture(`/${snap.selectedDecal}.png`);
   const { nodes, materials } = useGLTF("/shirt_baked2.glb");
   // color of shirt
   useFrame((state, delta) =>
