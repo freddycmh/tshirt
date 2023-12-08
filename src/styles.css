@@ -245,3 +245,9 @@ button:hover {
 
 /* Add or modify these styles in your CSS file */
 /* Add this to your existing CSS */
+
+.add:hover{
+transform: scale(1.2);
+  cursor: pointer;
+
+}

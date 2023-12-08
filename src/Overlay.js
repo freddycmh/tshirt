@@ -1,5 +1,5 @@
 import { Logo } from "@pmndrs/branding"
-import { AiOutlineShopping, AiOutlineHighlight, AiOutlineArrowLeft, AiFillCamera } from 'react-icons/ai'
+import { AiOutlineShopping, AiOutlineHighlight, AiOutlineArrowLeft, AiFillCamera,AiOutlinePlus } from 'react-icons/ai'
 
 import { useSnapshot } from "valtio"
 import { state } from './store'
@@ -96,10 +96,11 @@ function Customizer() {
               >
                 {/* <img src={decal + '_thumb.png'} alt="brand" /> */}
                 <img src={decal + '.png'} alt="brand" />
+                
               </div>
+              
             ))}
-          </div>
-            <div className="decal">
+            <div className="add">
           <label htmlFor="customDecalInput">
             <input
               type="file"
@@ -108,9 +109,12 @@ function Customizer() {
               onChange={handleDecalUpload}
               style={{ display: 'none' }}
             />
-            <AiFillCamera size="2em" />
+            <AiOutlinePlus size="2em" />
           </label>
         </div>
+            
+          </div>
+            
         </div>
 
         <button className="share"
