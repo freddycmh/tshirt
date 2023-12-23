@@ -60,17 +60,20 @@ function Customizer() {
   // const decals = ['react', 'three2', 'pmndrs']
 
   const handleDecalUpload = (event) => {
-    const file = event.target.files[0];
+  const file = event.target.files[0];
 
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        state.customDecal = reader.result;
-        state.selectedDecal = 'custom';
-      };
-      reader.readAsDataURL(file);
-    }
-  };
+  if (file) {
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      state.customDecal = reader.result;
+      state.selectedDecal = 'custom';
+
+      // Clear the value of the file input to allow uploading the same file again
+  
+    };
+    reader.readAsDataURL(file);
+  }
+};
 
   return (
     <section key="custom">
