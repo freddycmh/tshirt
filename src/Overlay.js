@@ -59,7 +59,7 @@ function Customizer() {
   // const colors = ['#ccc', '#EFBD4E', '#80C670', '#726DE8', '#EF674E', '#353934']
   // const decals = ['react', 'three2', 'pmndrs']
 
-  const handleDecalUpload = (event) => {
+ const handleDecalUpload = (event) => {
   const file = event.target.files[0];
 
   if (file) {
@@ -68,8 +68,20 @@ function Customizer() {
       state.customDecal = reader.result;
       state.selectedDecal = 'custom';
 
+      // Increment the selectedColor if it's already in the pattern c0c0cX
+      const colorPattern = /^#C0C0C(\d)$/;
+      const match = state.selectedColor.match(colorPattern);
+
+      if (match) {
+        const nextNumber = parseInt(match[1], 10) + 1;
+        state.selectedColor = `#C0C0C${nextNumber}`;
+      } else {
+        // If not in the pattern, set it to #C0C0C0
+        state.selectedColor = '#C0C0C0';
+      }
+
       // Clear the value of the file input to allow uploading the same file again
-  
+      event.target.value = '';
     };
     reader.readAsDataURL(file);
   }
