@@ -223,9 +223,9 @@ button:hover {
   }
 
   .section--container h1 {
-    font-size: 8rem;
-    letter-spacing: -6px;
-    line-height: 6rem;
+    font-size: 4rem;
+    letter-spacing: -2px;
+    line-height: 2rem;
   }
 
   .color-options {
